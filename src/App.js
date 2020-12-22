@@ -1,6 +1,6 @@
-import { BrowserRouter, Link } from "react-router-dom";
-
-
+import { BrowserRouter, Link, Route } from "react-router-dom";
+import DetailsScreen from "./Components/Display/DetailsScreen";
+import HomeScreen from "./Components/Display/HomeScreen";
 
 function App() {
   return (
@@ -17,9 +17,8 @@ function App() {
 
       </header>
       <main>
-          <div className="row">
-            <h1>Home screen</h1>
-          </div>
+          <Route path="/" exact component={HomeScreen}></Route>
+          <Route path="/products/:id" component={DetailsScreen} ></Route>
       </main>
       <footer className="row center ">
         <p>Copyright &copy {new Date().getFullYear()} Habib. All Rights Reserved</p>

@@ -19,9 +19,13 @@ body{
   height: 100%;
 }
 .row {
+  flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.center{
+  justify-content: center;
 }
 a{
   text-decoration: none;
@@ -64,4 +68,59 @@ footer{
 }
 footer.center{
   justify-content: center;
+}
+.card{
+  margin: 2rem;
+  border: 1px solid lightgray;
+  border-radius: .5rem;
+}
+.card-body{
+  padding: 1rem;
+}
+
+ul > li {
+  margin-bottom: .5rem;
+}
+h2{
+  font-size: 1.8rem;
+}
+.rating{
+  color: var(--buttonColor);
+}
+img.card-image {
+  max-width: 29rem;
+  width: 100%;
+}
+
+img.large{
+  width: 100%;
+}
+.col-1{
+  flex: 1 1 25rem;
+  padding: 1rem;
+}
+.col-2{
+  flex: 2 1 50rem;
+}
+ul , li {
+  list-style-type: none;
+  margin: 0;
+}
+.top{
+  align-items: flex-start;
+}
+
+button, textarea, select, input{
+  padding: 1rem;
+}
+button{
+  width: 100%;
+  background-color: var(--buttonColor);
+  margin-top: .5rem;
+}
+.border{
+  border: 1px solid lightgray;
+}
+.rating > :last-child{
+  color: black;
 }
