@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Link } from "react-router-dom";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <BrowserRouter>
+    <div className="grid-container">
+      <header className="row">
+        <div>
+        <Link to="/" className="brand">cartGear</Link>
+        </div>
+         <div>
+        <Link to="/">Cart</Link>
+        <Link to="/">Sign In</Link>
+         </div>
+
       </header>
+      <main>
+          <div className="row">
+            <h1>Home screen</h1>
+          </div>
+      </main>
+      <footer className="row center ">
+        <p>Copyright &copy {new Date().getFullYear()} Habib. All Rights Reserved</p>
+      </footer>
     </div>
+    </BrowserRouter>
   );
 }
 
