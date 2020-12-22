@@ -28,7 +28,7 @@ const DetailsScreen = (props) => {
                         </li>
                     <li>
                         <div className="row">
-                            <div>Status:</div>
+                            <div>Details:</div>
                             <div>{product.description}</div>
                         </div>
                     </li>
@@ -55,6 +55,20 @@ const DetailsScreen = (props) => {
                 </div>
                 </li>
                 <li>
+                <div className="row">
+                            <div>Status:</div>
+                            <div>{product.countInStock > 0 ? (
+                                <div className="success">Available</div>
+                            )
+                        : (
+                            <div className="error">Out of Stock</div>
+                        )}</div>
+                        </div>
+                </li>
+                {
+                    product.countInStock ? (
+                        <>
+                        <li>
                     <div className="row">
                         <div>Quantity:</div>
                         <div>
@@ -67,6 +81,9 @@ const DetailsScreen = (props) => {
                 <li>
                     <button>Add to Cart</button>
                 </li>
+                </>
+                    ) : ""
+                }
             </ul>
            </div>
         </div>
