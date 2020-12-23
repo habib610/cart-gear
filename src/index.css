@@ -24,6 +24,11 @@ body{
   justify-content: space-between;
   align-items: center;
 }
+.middle{
+  height: 80vh;
+  display: flex;
+  align-items: center;
+}
 .center{
   justify-content: center;
 }
@@ -126,9 +131,21 @@ button{
 .rating > :last-child{
   color: black;
 }
-.error{
-  color: red;
-}
+
 .success{
   color: darkgreen;
+}
+
+.alert {
+  padding: 1rem;
+  border: 0.1px solid transparent;
+  border-radius: .5rem;
+}
+.alert-info {
+  color: #2020a0;
+  background-color: #e0e0ff;
+}
+.alert-danger {
+  color: #a02020;
+  background-color: #ffe0e0e0;
 }
