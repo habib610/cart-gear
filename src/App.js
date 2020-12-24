@@ -3,6 +3,7 @@ import DetailsScreen from "./Components/Display/DetailsScreen";
 import HomeScreen from "./Components/Display/HomeScreen";
 
 function App() {
+
   return (
     <BrowserRouter>
     <div className="grid-container">

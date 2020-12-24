@@ -149,3 +149,6 @@ button{
   color: #a02020;
   background-color: #ffe0e0e0;
 }
+.danger{
+  color: red;
+}

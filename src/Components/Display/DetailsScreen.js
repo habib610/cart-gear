@@ -1,17 +1,25 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import data from '../../data';
 import Rating from '../Rating/Rating';
 
 const DetailsScreen = (props) => {
     const [quantity, setQuantity] = useState(1);
     const id = props.match.params.id;
+
+    useEffect(()=>{
+        
+    }, [])
     const product = data.products.find(pd => pd._id === id);
     if(!product){
       return  <h1>Product Not Found</h1>
     }
+    
     return (
         <div className="row top">
+            <Link to ="/">Back to Home </Link>
             <div className="col-2">
             <img className="large" src={`/${product.image}`} alt={product.name}/>
             </div>
@@ -44,7 +52,6 @@ const DetailsScreen = (props) => {
                     </li>
                 </ul>
                 </div>
-
             <div className="col-1">
            <ul>
                 <li>
@@ -62,7 +69,7 @@ const DetailsScreen = (props) => {
                                 <div className="success">Available</div>
                             )
                         : (
-                            <div className="error">Out of Stock</div>
+                            <div className="danger">Out of Stock</div>
                         )}</div>
                         </div>
                 </li>
