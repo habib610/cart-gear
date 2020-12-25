@@ -168,3 +168,10 @@ button:hover{
   border-radius: .5rem;
   background-color: #00102e11;
 }
+.badge{
+  background-color: var(--hoverColor);
+  padding: .2rem .7rem;
+  border-radius: 50%;
+  margin-left: .2rem;
+  color: white;
+}
