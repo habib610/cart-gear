@@ -24,7 +24,7 @@ function App() {
           <Route path="/products/:id" component={DetailsScreen} ></Route>
       </main>
       <footer className="row center ">
-        <p>Copyright &copy {new Date().getFullYear()} Habib. All Rights Reserved</p>
+        <p>Copyright &copy; {new Date().getFullYear()} Habib. All Rights Reserved</p>
       </footer>
     </div>
     </BrowserRouter>
