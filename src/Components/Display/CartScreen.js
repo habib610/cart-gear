@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart } from "../Actions/CartActions";
+import { addToCart, removeItemsFromCart } from "../Actions/CartActions";
 import ErrorMessage from "./../Error/ErrorMessage";
 const CartScreen = (props) => {
   const productId = props.match.params.id;
@@ -21,6 +21,7 @@ const CartScreen = (props) => {
 
   const removeFromCart = (id) => {
       //delete
+      dispatch(removeItemsFromCart(id))
   }
   const checkoutHandler = () => {
       props.history.push(`/signin?redirect=shipping`)
