@@ -61,7 +61,7 @@ const CartScreen = (props) => {
                       </select>
                     </div>
                     <div>
-                        <button onClick={()=> removeFromCart(item.product)}>Delete</button>
+                        <button  onClick={()=> removeFromCart(item.product)}>Delete</button>
                     </div>
                   </div>
                 </li>
@@ -79,7 +79,7 @@ const CartScreen = (props) => {
                   cartItems.reduce((total, current)=> total + current.price * current.qty, 0)
               }
               </h4>
-          <button className="primary block" onClick={checkoutHandler}>Checkout</button>
+          <button disabled={cartItems.length === 0} className="primary block" onClick={checkoutHandler}>Checkout</button>
           </div>
       </div>
     </div>
