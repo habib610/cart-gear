@@ -112,7 +112,7 @@ const DetailsScreen = (props) => {
                     </div>
                   </li>
                   <li>
-                    <button onClick={addToCart}>Add to Cart</button>
+                    <button className="primary block" onClick={addToCart}>Add to Cart</button>
                   </li>
                 </>
               ) : (
