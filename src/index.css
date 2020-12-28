@@ -189,3 +189,18 @@ button.block{
 .min-30{
   min-width: 30rem;
 }
+
+.form {
+  max-width: 60rem;
+  margin: 0 auto;
+
+}
+.form > div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+.form label {
+  display: block;
+  margin: 1rem 0;
+}
