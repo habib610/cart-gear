@@ -1,12 +1,16 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { userSingInAction } from "../Actions/userActions";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
       e.preventDefault();
+      dispatch(userSingInAction(email, password))
   }
   return (
     <div>
