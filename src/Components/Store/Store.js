@@ -1,4 +1,3 @@
-import { parse } from "@fortawesome/fontawesome-svg-core";
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import { cartReducers } from "../Reducers/cartReducers";

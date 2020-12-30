@@ -204,3 +204,22 @@ button.block{
   display: block;
   margin: 1rem 0;
 }
+.dropdown{
+  display: inline-block;
+  position: relative;
+}
+.dropdown-item{
+  position: absolute;
+  right: 0;
+  min-width: 12rem;
+  margin: 0;
+  margin-top: 0.4rem;
+  padding: 1rem;
+  background-color: var(--mainBg);
+  border-radius: .5rem;
+  z-index: 1;
+  display: none;
+}
+.dropdown:hover .dropdown-item{
+  display: block;
+}
