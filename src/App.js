@@ -4,6 +4,7 @@ import { userSignOutActions } from "./Components/Actions/userActions";
 import CartScreen from "./Components/Display/CartScreen";
 import DetailsScreen from "./Components/Display/DetailsScreen";
 import HomeScreen from "./Components/Display/HomeScreen";
+import PaymentMethod from "./Components/Display/PaymentMethod";
 import Register from "./Components/Display/Register";
 import ShippingAddress from "./Components/Display/ShippingAddress";
 import SignIn from "./Components/Display/SignIn";
@@ -54,6 +55,7 @@ function App() {
           <Route path="/signin" component={SignIn} ></Route>
           <Route path="/register" component={Register} ></Route>
           <Route path="/shipping" component={ShippingAddress} ></Route>
+          <Route path="/payment" component={PaymentMethod} ></Route>
       </main>
       <footer className="row center ">
         <p>Copyright &copy; {new Date().getFullYear()} Habib. All Rights Reserved</p>
