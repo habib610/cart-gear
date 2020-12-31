@@ -5,6 +5,7 @@ import CartScreen from "./Components/Display/CartScreen";
 import DetailsScreen from "./Components/Display/DetailsScreen";
 import HomeScreen from "./Components/Display/HomeScreen";
 import Register from "./Components/Display/Register";
+import ShippingAddress from "./Components/Display/ShippingAddress";
 import SignIn from "./Components/Display/SignIn";
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route path="/products/:id" component={DetailsScreen} ></Route>
           <Route path="/signin" component={SignIn} ></Route>
           <Route path="/register" component={Register} ></Route>
+          <Route path="/shipping" component={ShippingAddress} ></Route>
       </main>
       <footer className="row center ">
         <p>Copyright &copy; {new Date().getFullYear()} Habib. All Rights Reserved</p>

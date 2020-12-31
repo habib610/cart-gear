@@ -223,3 +223,15 @@ button.block{
 .dropdown:hover .dropdown-item{
   display: block;
 }
+
+.checkoutSteps > div {
+  border-top: .3rem solid #c0c0c0;
+  flex: 1;
+  color: #00102e;
+  padding: 1rem;
+  font-weight: bold;
+}
+.checkoutSteps > div.active {
+  color: var(--buttonColor);
+  border-top-color:   var(--buttonColor) ;
+}
