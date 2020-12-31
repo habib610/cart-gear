@@ -4,6 +4,7 @@ import { userSignOutActions } from "./Components/Actions/userActions";
 import CartScreen from "./Components/Display/CartScreen";
 import DetailsScreen from "./Components/Display/DetailsScreen";
 import HomeScreen from "./Components/Display/HomeScreen";
+import Register from "./Components/Display/Register";
 import SignIn from "./Components/Display/SignIn";
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
             <Link to="/signin">Sign In</Link>
           )
         }
-        
+
          </div>
 
       </header>
@@ -50,6 +51,7 @@ function App() {
           <Route path="/cart/:id?"  component={CartScreen}></Route>
           <Route path="/products/:id" component={DetailsScreen} ></Route>
           <Route path="/signin" component={SignIn} ></Route>
+          <Route path="/register" component={Register} ></Route>
       </main>
       <footer className="row center ">
         <p>Copyright &copy; {new Date().getFullYear()} Habib. All Rights Reserved</p>
