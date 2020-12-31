@@ -5,6 +5,7 @@ import CartScreen from "./Components/Display/CartScreen";
 import DetailsScreen from "./Components/Display/DetailsScreen";
 import HomeScreen from "./Components/Display/HomeScreen";
 import PaymentMethod from "./Components/Display/PaymentMethod";
+import PlaceOrder from "./Components/Display/PlaceOrder";
 import Register from "./Components/Display/Register";
 import ShippingAddress from "./Components/Display/ShippingAddress";
 import SignIn from "./Components/Display/SignIn";
@@ -56,6 +57,7 @@ function App() {
           <Route path="/register" component={Register} ></Route>
           <Route path="/shipping" component={ShippingAddress} ></Route>
           <Route path="/payment" component={PaymentMethod} ></Route>
+          <Route path="/placeorder" component={PlaceOrder} ></Route>
       </main>
       <footer className="row center ">
         <p>Copyright &copy; {new Date().getFullYear()} Habib. All Rights Reserved</p>
