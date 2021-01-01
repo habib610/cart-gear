@@ -13,21 +13,13 @@ const ShippingAddress = (props) => {
     if(!userInfo) {
         props.history.push('/signin')
     }
-   
 
-   
-    // const [fullName, setFullName] = useState(shippingAddress.fullName);
-    // const [address, setAddress] = useState(shippingAddress.address);
-    // const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
-    // const [city, setCity] = useState(shippingAddress.city);
-    // const [country, setCountry] = useState(shippingAddress.country);
+    const [fullName, setFullName] = useState(shippingAddress.fullName);
+    const [address, setAddress] = useState(shippingAddress.address);
+    const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+    const [city, setCity] = useState(shippingAddress.city);
+    const [country, setCountry] = useState(shippingAddress.country);
 
-
-    const [fullName, setFullName] = useState('');
-    const [address, setAddress] = useState('');
-    const [postalCode, setPostalCode] = useState('');
-    const [city, setCity] = useState('');
-    const [country, setCountry] = useState('');
 
     const dispatch = useDispatch();
 
