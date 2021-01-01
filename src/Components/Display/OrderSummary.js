@@ -1,28 +1,53 @@
+import axios from "axios";
 import React, { useEffect } from "react";
+import { useState } from "react";
+import { PayPalButton } from "react-paypal-button-v2";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { detailsOrder } from "../Actions/createOrderActions";
 import ErrorMessage from "../Error/ErrorMessage";
 import Loading from "../Loading/Loading";
-import CheckoutSteps from "./CheckoutSteps";
 
 const OrderSummary = (props) => {
   const orderId = props.match.params.id;
-
+  const [sdkReady, setSdkReady] = useState(false);
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
   const dispatch = useDispatch();
-  const toPrice = (num) => Number(num.toFixed(2));
   useEffect(() => {
-    dispatch(detailsOrder(orderId));
-  }, [orderId, dispatch]);
+    const addPayPalScript = async () => {
+        const { data } = await axios.get('/api/config/paypal');
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
+        script.async = true;
+        script.onload = () => {
+          setSdkReady(true);
+        };
+        document.body.appendChild(script);
+      };
+      if (!order) {
+        dispatch(detailsOrder(orderId));
+      } else {
+        if (!order.isPaid) {
+          if (!window.paypal) {
+            addPayPalScript();
+          } else {
+            setSdkReady(true);
+          }
+        }
+      }
+  }, [orderId, order, sdkReady, dispatch]);
+
+  const successPaymentHandler = () => {};
+
   return loading ? (
     <Loading></Loading>
   ) : error ? (
     <ErrorMessage variant="danger">{error}</ErrorMessage>
   ) : (
     <div>
-        <h1>Order #{order._id}</h1>
+      <h1>Order #{order._id}</h1>
       <div className="row top">
         <div className="col-2">
           <ul>
@@ -30,24 +55,30 @@ const OrderSummary = (props) => {
               <div className="card card-body">
                 <h2>Shipping</h2>
                 <p>
-                  <strong>Name:</strong> { order.shippingAddress.fullName} <br />
+                  <strong>Name:</strong> {order.shippingAddress.fullName} <br />
                   <strong>Address:</strong> {order.shippingAddress.address}{" "}
-                  {order.shippingAddress.postalCode}, {order.shippingAddress.city}{" "}
-                  {order.shippingAddress.country}
+                  {order.shippingAddress.postalCode},{" "}
+                  {order.shippingAddress.city} {order.shippingAddress.country}
                 </p>
-                {
-                    order.isDelivered ?(<ErrorMessage variant="success">Delivered at {order.deliveredAt}</ErrorMessage>) : 
-                    (<ErrorMessage variant="danger">Not Delivered</ErrorMessage>)
-                }
+                {order.isDelivered ? (
+                  <ErrorMessage variant="success">
+                    Delivered at {order.deliveredAt}
+                  </ErrorMessage>
+                ) : (
+                  <ErrorMessage variant="danger">Not Delivered</ErrorMessage>
+                )}
               </div>
             </li>
             <li>
               <div className="card card-body">
                 <h2>Payment Method</h2>
-                {
-                    order.isPaid ?(<ErrorMessage variant="success">Paid at {order.deliveredAt}</ErrorMessage>) : 
-                    (<ErrorMessage variant="danger">Not Paid</ErrorMessage>)
-                }
+                {order.isPaid ? (
+                  <ErrorMessage variant="success">
+                    Paid at {order.deliveredAt}
+                  </ErrorMessage>
+                ) : (
+                  <ErrorMessage variant="danger">Not Paid</ErrorMessage>
+                )}
                 <p>
                   <strong>Method:</strong> {order.paymentMethod}
                 </p>
@@ -118,6 +149,19 @@ const OrderSummary = (props) => {
                   </div>
                 </div>
               </li>
+
+              {!order.isPaid && (
+                <li>
+                  {!sdkReady ? (
+                    <Loading></Loading>
+                  ) : (
+                    <PayPalButton
+                      amount={order.totalPrice}
+                      onSuccess={successPaymentHandler}
+                    />
+                  )}
+                </li>
+              )}
             </ul>
           </div>
         </div>
