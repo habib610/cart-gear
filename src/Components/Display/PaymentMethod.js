@@ -6,19 +6,21 @@ import CheckoutSteps from './CheckoutSteps';
 
 const PaymentMethod = (props) => {
     const dispatch = useDispatch();
-    const cart = useSelector(state => state.cart);
+  
     // const {shippingAddress} = cart;
     // console.log(shippingAddress, cart)
     // if(!shippingAddress.address) {
     //     props.history.push('/shipping')
     // }
+
     const [payment, setPayment] = useState('paypal');
     const handleSubmit = (e)=> {
         e.preventDefault()
         dispatch(savePaymentMethod(payment))
         props.history.push('/placeorder')
     }
-    
+    const cart = useSelector(state => state.cart);
+    console.log(cart)
     return (
         <div>
             <CheckoutSteps step1 step2 step3/>
@@ -37,7 +39,7 @@ const PaymentMethod = (props) => {
                 />
                 <label htmlFor="payPal">PayPal</label>
             </div>
-            <div>
+            {/* <div>
                 <input type="radio"
                 id="stripe"
                 value="stripe"
@@ -45,7 +47,7 @@ const PaymentMethod = (props) => {
                 onChange={(e)=> setPayment(e.target.value)}
                 />
                 <label htmlFor="stripe">Stripe</label>
-            </div>
+            </div> */}
             </div>
             
             <div>
