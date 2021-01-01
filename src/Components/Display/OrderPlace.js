@@ -1,13 +1,18 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { createOrderActions } from "../Actions/createOrderActions";
+import { ORDER_CREATE_RESET } from "../Constants/orderConstants";
+import ErrorMessage from "../Error/ErrorMessage";
+import Loading from "../Loading/Loading";
 import CheckoutSteps from "./CheckoutSteps";
 
 const PlaceOrder = (props) => {
   const cart = useSelector((state) => state.cart);
-  if(!cart.paymentMethod) {
-      props.history.push('/shipping')
+  if (!cart.paymentMethod) {
+    props.history.push("/payment");
   }
+
 
   const toPrice = (num) => Number(num.toFixed(2));
   cart.itemsPrice = toPrice(
@@ -22,9 +27,18 @@ const PlaceOrder = (props) => {
 
   const { shippingAddress } = cart;
 
+  const dispatch = useDispatch();
   const placeOrderHandler = () => {
-    //
+    dispatch(createOrderActions({ ...cart, orderItems: cart.cartItems }));
   };
+    const createOrder = useSelector((state) => state.createOrder);
+  const { loading, success, error, order } = createOrder;
+  useEffect(() => {
+    if (success) {
+      props.history.push(`/order/${order._id}`);
+      dispatch({ type: ORDER_CREATE_RESET });
+    }
+  }, [success, dispatch, props.history, order]);
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
@@ -45,7 +59,10 @@ const PlaceOrder = (props) => {
             <li>
               <div className="card card-body">
                 <h2>Payment Method</h2>
-                <p>{cart.paymentMethod}</p>
+                <p>
+                  {" "}
+                  <strong>Method:</strong> {cart.paymentMethod}
+                </p>
               </div>
             </li>
             <li>
@@ -88,19 +105,19 @@ const PlaceOrder = (props) => {
               <li>
                 <div className="row">
                   <div>Items</div>
-                  <div> $ {cart.itemsPrice} </div>
+                  <div> $ {cart.itemsPrice.toFixed(2)} </div>
                 </div>
               </li>
               <li>
                 <div className="row">
                   <div>Shipping</div>
-                  <div> $ {cart.shippingPrice} </div>
+                  <div> $ {cart.shippingPrice.toFixed(2)} </div>
                 </div>
               </li>
               <li>
                 <div className="row">
                   <div>Tax</div>
-                  <div> $ { cart.taxPrice }</div>
+                  <div> $ {cart.taxPrice.toFixed(2)}</div>
                 </div>
               </li>
               <li>
@@ -109,7 +126,7 @@ const PlaceOrder = (props) => {
                     <strong>Order Total</strong>
                   </div>
                   <div>
-                    <strong>$ {cart.totalPrice} </strong>
+                    <strong>$ {cart.totalPrice.toFixed(2)} </strong>
                   </div>
                 </div>
               </li>
@@ -122,6 +139,12 @@ const PlaceOrder = (props) => {
                 >
                   Place Order
                 </button>
+                {
+                   loading && <Loading/>
+                }
+                {
+                   error &&   <ErrorMessage variant="danger"/>
+                }
               </li>
             </ul>
           </div>
