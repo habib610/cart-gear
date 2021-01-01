@@ -137,7 +137,7 @@ const PlaceOrder = (props) => {
                   onClick={placeOrderHandler}
                   disabled={cart.cartItems === 0}
                 >
-                  Place Order
+                Place Order
                 </button>
                 {
                    loading && <Loading/>
