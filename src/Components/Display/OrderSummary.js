@@ -4,9 +4,10 @@ import { useState } from "react";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { detailsOrder } from "../Actions/createOrderActions";
+import { detailsOrder, payOrder } from "../Actions/createOrderActions";
 import ErrorMessage from "../Error/ErrorMessage";
 import Loading from "../Loading/Loading";
+import {ORDER_PAY_RESET} from '../Constants/orderConstants'
 
 const OrderSummary = (props) => {
   const orderId = props.match.params.id;
@@ -14,6 +15,8 @@ const OrderSummary = (props) => {
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
   const dispatch = useDispatch();
+  const orderPay = useSelector(state => state.orderPay);
+  const {error: errorPay, loading:loadingPay, success: successPay} = orderPay;
   useEffect(() => {
     const addPayPalScript = async () => {
         const { data } = await axios.get('/api/config/paypal');
@@ -26,7 +29,8 @@ const OrderSummary = (props) => {
         };
         document.body.appendChild(script);
       };
-      if (!order) {
+      if (!order || successPay || (order && order._id !== orderId ) ) {
+        dispatch({type: ORDER_PAY_RESET})
         dispatch(detailsOrder(orderId));
       } else {
         if (!order.isPaid) {
@@ -37,9 +41,11 @@ const OrderSummary = (props) => {
           }
         }
       }
-  }, [orderId, order, sdkReady, dispatch]);
+  }, [orderId, order, sdkReady, successPay, dispatch]);
 
-  const successPaymentHandler = () => {};
+  const successPaymentHandler = (paymentResult) => {
+      dispatch(payOrder(order, paymentResult))
+  };
 
   return loading ? (
     <Loading></Loading>
@@ -74,7 +80,7 @@ const OrderSummary = (props) => {
                 <h2>Payment Method</h2>
                 {order.isPaid ? (
                   <ErrorMessage variant="success">
-                    Paid at {order.deliveredAt}
+                    Paid at: {order.paidAt}
                   </ErrorMessage>
                 ) : (
                   <ErrorMessage variant="danger">Not Paid</ErrorMessage>
@@ -155,10 +161,18 @@ const OrderSummary = (props) => {
                   {!sdkReady ? (
                     <Loading></Loading>
                   ) : (
+                      <>
+                      {
+                          errorPay && <ErrorMessage variant="danger">{errorPay}</ErrorMessage>
+                      }
+                      {
+                          loadingPay && (<Loading/>)
+                      }
                     <PayPalButton
                       amount={order.totalPrice}
                       onSuccess={successPaymentHandler}
                     />
+                    </>
                   )}
                 </li>
               )}
