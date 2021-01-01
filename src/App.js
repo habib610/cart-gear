@@ -9,6 +9,7 @@ import PlaceOrder from "./Components/Display/OrderPlace";
 import Register from "./Components/Display/Register";
 import ShippingAddress from "./Components/Display/ShippingAddress";
 import SignIn from "./Components/Display/SignIn";
+import OrderSummary from "./Components/Display/OrderSummary";
 
 function App() {
 
@@ -58,6 +59,7 @@ function App() {
           <Route path="/shipping" component={ShippingAddress} ></Route>
           <Route path="/payment" component={PaymentMethod} ></Route>
           <Route path="/placeorder" component={PlaceOrder} ></Route>
+          <Route path="/order/:id" component={OrderSummary} ></Route>
       </main>
       <footer className="row center ">
         <p>Copyright &copy; {new Date().getFullYear()} Habib. All Rights Reserved</p>

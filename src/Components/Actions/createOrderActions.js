@@ -4,6 +4,9 @@ import {
   ORDER_CREATE_FAIL,
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
+  ORDER_DETAILS_FAIL,
+  ORDER_DETAILS_REQUEST,
+  ORDER_DETAILS_SUCCESS,
 } from "../Constants/orderConstants";
 
 export const createOrderActions = (order) => async (dispatch, getState) => {
@@ -31,3 +34,22 @@ export const createOrderActions = (order) => async (dispatch, getState) => {
     }
   };
   
+
+export const detailsOrder = (orderId) => async(dispatch, getState) => {
+  dispatch({type: ORDER_DETAILS_REQUEST, payload: orderId})
+  const {
+    singInInfo: { userInfo },
+  } = getState();
+  try {
+    const {data} = await axios.get(`/api/orders/${orderId}`, {
+      headers: {Authorization: `Bearer ${userInfo.token}` }
+    })
+    dispatch({type: ORDER_DETAILS_SUCCESS, payload: data})
+  } catch (error) {
+   const message =  error.response && error.response.data.message
+   ? error.response.data.message
+   : error.message
+   dispatch({type: ORDER_DETAILS_FAIL, payload: message})
+
+  }
+}
