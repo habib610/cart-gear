@@ -1,24 +1,37 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { createdOrder } from '../Actions/OrderActions';
+import { ORDER_CREATE_RESET } from '../Constants/orderConstants';
+import ErrorMessage from '../Error/ErrorMessage';
+import Loading from '../Loading/Loading';
 import CheckoutSteps from './CheckoutSteps';
 
 const PlaceOrder = (props) => {
     const cart = useSelector(state => state.cart);
-    console.log(cart)
+
     if(!cart.paymentMethod) {
         props.history.push('/shipping')
     }
-    
+    const orderCreate = useSelector(state => state.orderCreate);
+    const {loading, success, error, order} = orderCreate;
     const toPrice = num => Number(num.toFixed(2));
     cart.itemsPrice = toPrice(cart.cartItems.reduce((total, current)=> total + current.qty * current.price, 0));
     cart.shippingPrice = cart.itemsPrice > 100 ? toPrice(0) : toPrice(10);
     cart.taxPrice = toPrice(0.15 * cart.itemsPrice);
     cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
+    const dispatch = useDispatch();
     const placeOrderHandler = () => {
-        //
+        dispatch(createdOrder({...cart, orderItems: cart}))
     }
+
+    useEffect(()=> {
+        if(success) {
+            props.history.push(`/order/${order._id}`)
+        }
+        dispatch({type: ORDER_CREATE_RESET})
+    }, [success, props.history, order, dispatch])
     return (
         <div>
             <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
@@ -102,6 +115,12 @@ const PlaceOrder = (props) => {
                             disabled={cart.cartItems === 0}
                             >Place Order</button>
                         </li>
+                        {
+                            loading && <Loading/>
+                        }
+                        {
+                            error && <ErrorMessage variant="danger">{error}</ErrorMessage>
+                        }
                     </ul>
                 </div>
             </div>

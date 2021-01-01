@@ -56,8 +56,8 @@ function App() {
           <Route path="/signin" component={SignIn} ></Route>
           <Route path="/register" component={Register} ></Route>
           <Route path="/shipping" component={ShippingAddress} ></Route>
-          <Route path="/payment" component={PaymentMethod} ></Route>
-          <Route path="/placeorder" component={PlaceOrder} ></Route>
+          {/* <Route path="/payment" component={PaymentMethod} ></Route> */}
+          {/* <Route path="/placeorder" component={PlaceOrder} ></Route> */}
       </main>
       <footer className="row center ">
         <p>Copyright &copy; {new Date().getFullYear()} Habib. All Rights Reserved</p>

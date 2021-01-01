@@ -7,30 +7,27 @@ import CheckoutSteps from './CheckoutSteps';
 const ShippingAddress = (props) => {
     const singInInfo = useSelector(state => state.singInInfo);
     const {userInfo} = singInInfo;
-    if(!userInfo) {
-        props.history.push('/signin')
-    }
-    const dispatch = useDispatch();
 
     const cart = useSelector(state => state.cart);
     const {shippingAddress} = cart;
-    // const [fullName, setFullName] = useState(shippingAddress.fullName);
-    // const [address, setAddress] = useState(shippingAddress.address);
-    // const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
-    // const [city, setCity] = useState(shippingAddress.city);
-    // const [country, setCountry] = useState(shippingAddress.country);
+    if(!userInfo) {
+        props.history.push('/signin')
+    }
+   
 
+   
+    const [fullName, setFullName] = useState(shippingAddress.fullName);
+    const [address, setAddress] = useState(shippingAddress.address);
+    const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+    const [city, setCity] = useState(shippingAddress.city);
+    const [country, setCountry] = useState(shippingAddress.country);
 
-    const [fullName, setFullName] = useState('');
-    const [address, setAddress] = useState('');
-    const [postalCode, setPostalCode] = useState('');
-    const [city, setCity] = useState('');
-    const [country, setCountry] = useState('');
-
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         //
-        dispatch(saveShippingActions({fullName, address, postalCode, city, country}))
+        e.preventDefault()
+        dispatch(saveShippingActions({fullName, address,  city, postalCode, country}))
         props.history.push('/payment')
     }
     return (
