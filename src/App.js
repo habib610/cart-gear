@@ -57,6 +57,32 @@ function App() {
             <Link to="/signin">Sign In</Link>
           )
         }
+        {
+          userInfo && userInfo.isAdmin && (
+            <div className="dropdown">
+              <Link to="#admin"> Admin <i className="fa fa-caret-down"></i> </Link>
+              <ul className="dropdown-item">
+                <li>
+                  <Link to ="/dashboard">Dashboard</Link>
+                </li>
+               <li>
+               </li>
+                <li>
+                <Link to="/userlist">UserList</Link>
+                </li>
+                <li>
+                <Link to="/orders">Orders</Link>
+                </li>
+                <li>
+                <Link to="/products">Products</Link>
+                </li>
+                <li>
+                <Link onClick={ signOut} to="#signout">Signout</Link>
+                </li>
+              </ul>
+            </div>
+          )
+        }
 
          </div>
 
