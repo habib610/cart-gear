@@ -4,6 +4,7 @@ import { cartReducers } from "../Reducers/cartReducers";
 import {
   orderCreateReducers,
   orderDetailsReducers,
+  orderMineReducers,
   orderPayReducer,
 } from "../Reducers/orderReducers";
 // import { orderCreateReducers } from "../Reducers/orderReducers";
@@ -37,7 +38,8 @@ const reducer = combineReducers({
   useRegister: useRegisterReducers,
   createOrder: orderCreateReducers,
   orderDetails: orderDetailsReducers,
-  orderPay: orderPayReducer
+  orderPay: orderPayReducer,
+  orderMineList: orderMineReducers
 });
 const store = createStore(
   reducer,

@@ -214,7 +214,7 @@ button.block{
 .dropdown-item{
   position: absolute;
   right: 0;
-  min-width: 12rem;
+  min-width: 15rem;
   margin: 0;
   margin-top: 0.4rem;
   padding: 1rem;
@@ -237,4 +237,33 @@ button.block{
 .checkoutSteps > div.active {
   color: var(--buttonColor);
   border-top-color:   var(--buttonColor) ;
+}
+
+.table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table tbody tr:nth-of-type(odd) {
+  background-color: #e4dfff;
+}
+.table th{
+  background-color: var(--mainBg);
+  color: white;
+}
+.table th, 
+.table td {
+  text-align: left;
+  border: .1rem solid var(--buttonColor);
+  padding: .5rem;
+}
+
+.table button {
+  margin: 0 0 0.2rem;
+}
+button.small {
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 1rem;
+  max-width: 10rem;
 }

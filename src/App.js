@@ -10,6 +10,8 @@ import Register from "./Components/Display/Register";
 import ShippingAddress from "./Components/Display/ShippingAddress";
 import SignIn from "./Components/Display/SignIn";
 import OrderSummary from "./Components/Display/OrderSummary";
+import OrderHistory from "./Components/Display/OrderHistory";
+import OrderHistoryScreen from "./Components/Display/OrderHistory";
 
 function App() {
 
@@ -39,7 +41,12 @@ function App() {
             <div className="dropdown">
               <Link to="#">{userInfo.name} <i className="fa fa-caret-down"></i> </Link>
               <ul className="dropdown-item">
+                <li>
                 <Link onClick={ signOut} to="#signout">Signout</Link>
+                </li>
+                <li>
+                <Link to="/history">Order History</Link>
+                </li>
               </ul>
             </div>
           ) : (
@@ -51,6 +58,7 @@ function App() {
 
       </header>
       <main>
+         
           <Route path="/" exact component={HomeScreen}></Route>
           <Route path="/cart/:id?"  component={CartScreen}></Route>
           <Route path="/products/:id" component={DetailsScreen} ></Route>
@@ -59,6 +67,7 @@ function App() {
           <Route path="/shipping" component={ShippingAddress} ></Route>
           <Route path="/payment" component={PaymentMethod} ></Route>
           <Route path="/placeorder" component={PlaceOrder} ></Route>
+          <Route path="/history" component={OrderHistoryScreen}></Route>
           <Route path="/order/:id" component={OrderSummary} ></Route>
       </main>
       <footer className="row center ">
