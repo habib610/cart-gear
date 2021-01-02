@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  USER_DETAILS_FAIL,
+  USER_DETAILS_REQUEST,
+  USER_DETAILS_SUCCESS,
   USER_SIGN_IN_FAIL,
   USER_SIGN_IN_REQUEST,
   USER_SIGN_IN_SUCCESS,
@@ -51,4 +54,26 @@ export const userSignOutActions = () => (dispatch) => {
     dispatch({
         type: USER_SIGN_OUT
     })
+}
+
+export const detailsUser = (userId) => async(dispatch, getState) => {
+  dispatch({type: USER_DETAILS_REQUEST, payload: userId})
+  const {
+    singInInfo: { userInfo },
+  } = getState();
+
+  try {
+    const {data} = await axios.get(`/api/users/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
+    dispatch({type: USER_DETAILS_SUCCESS, payload: data})
+
+  } catch(error){
+    const message = error.response && error.response.data.message
+    ? error.response.data.message
+    : error.message;
+    dispatch({type: USER_DETAILS_FAIL, payload: message})
+  }
 }

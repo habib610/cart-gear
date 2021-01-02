@@ -12,6 +12,7 @@ import SignIn from "./Components/Display/SignIn";
 import OrderSummary from "./Components/Display/OrderSummary";
 import OrderHistory from "./Components/Display/OrderHistory";
 import OrderHistoryScreen from "./Components/Display/OrderHistory";
+import ProfileScreen from "./Components/Display/ProfileScreen";
 
 function App() {
 
@@ -42,6 +43,9 @@ function App() {
               <Link to="#">{userInfo.name} <i className="fa fa-caret-down"></i> </Link>
               <ul className="dropdown-item">
                 <li>
+                  <Link to ="/profile">Profile</Link>
+                </li>
+                <li>
                 <Link onClick={ signOut} to="#signout">Signout</Link>
                 </li>
                 <li>
@@ -69,6 +73,7 @@ function App() {
           <Route path="/placeorder" component={PlaceOrder} ></Route>
           <Route path="/history" component={OrderHistoryScreen}></Route>
           <Route path="/order/:id" component={OrderSummary} ></Route>
+          <Route path="/profile" component={ProfileScreen}></Route>
       </main>
       <footer className="row center ">
         <p>Copyright &copy; {new Date().getFullYear()} Habib. All Rights Reserved</p>
