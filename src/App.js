@@ -10,9 +10,9 @@ import Register from "./Components/Display/Register";
 import ShippingAddress from "./Components/Display/ShippingAddress";
 import SignIn from "./Components/Display/SignIn";
 import OrderSummary from "./Components/Display/OrderSummary";
-import OrderHistory from "./Components/Display/OrderHistory";
 import OrderHistoryScreen from "./Components/Display/OrderHistory";
 import ProfileScreen from "./Components/Display/ProfileScreen";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 function App() {
 
@@ -73,7 +73,7 @@ function App() {
           <Route path="/placeorder" component={PlaceOrder} ></Route>
           <Route path="/history" component={OrderHistoryScreen}></Route>
           <Route path="/order/:id" component={OrderSummary} ></Route>
-          <Route path="/profile" component={ProfileScreen}></Route>
+          <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
       </main>
       <footer className="row center ">
         <p>Copyright &copy; {new Date().getFullYear()} Habib. All Rights Reserved</p>
