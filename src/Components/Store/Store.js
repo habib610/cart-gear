@@ -9,7 +9,7 @@ import {
 } from "../Reducers/orderReducers";
 // import { orderCreateReducers } from "../Reducers/orderReducers";
 import { detailsReducers, productReducers } from "../Reducers/productReducers";
-import { userDetailsReducer, useRegisterReducers, userReducers } from "../Reducers/userReducers";
+import { userDetailsReducer, useRegisterReducers, userReducers, userUpdateProfileReducer } from "../Reducers/userReducers";
 
 const initialState = {
   singInInfo: {
@@ -40,7 +40,8 @@ const reducer = combineReducers({
   orderDetails: orderDetailsReducers,
   orderPay: orderPayReducer,
   orderMineList: orderMineReducers,
-  userDetails: userDetailsReducer
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer
 });
 const store = createStore(
   reducer,
