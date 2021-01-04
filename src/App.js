@@ -13,6 +13,9 @@ import OrderSummary from "./Components/Display/OrderSummary";
 import OrderHistoryScreen from "./Components/Display/OrderHistory";
 import ProfileScreen from "./Components/Display/ProfileScreen";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import UserList from "./Components/Display/UserList";
+import Orders from "./Components/Display/Orders";
+import Products from "./Components/Products/Products";
 
 function App() {
 
@@ -101,6 +104,10 @@ function App() {
           <Route path="/history" component={OrderHistoryScreen}></Route>
           <Route path="/order/:id" component={OrderSummary} ></Route>
           <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
+          <Route path="/userlist" component={UserList}></Route>
+          <Route path="/orders" component={Orders}></Route>
+          <Route path="/products" component={Products}></Route>
+          <Route path="/userlist" component={UserList}></Route>
       </main>
       <footer className="row center ">
         <p>Copyright &copy; {new Date().getFullYear()} Habib. All Rights Reserved</p>

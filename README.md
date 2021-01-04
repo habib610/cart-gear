@@ -25,6 +25,9 @@
 7. Express
 8. bcryptjs
 9. JWT
+<<<<<<< HEAD
 
 
 [Live](https://cart-gear.netlify.app/)
+=======
+>>>>>>> c168fdf6859ac6e49e72f715b015830fd20f76bc
