@@ -21,7 +21,7 @@ export const createOrderActions = (order) => async (dispatch, getState) => {
     const {
       singInInfo: { userInfo },
     } = getState();
-    const { data } = await axios.post("/api/orders", order, {
+    const { data } = await axios.post("https://cart-gear22.herokuapp.com/api/orders", order, {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -46,7 +46,7 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
     singInInfo: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.get(`/api/orders/${orderId}`, {
+    const { data } = await axios.get(`https://cart-gear22.herokuapp.com/api/orders/${orderId}`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
@@ -69,7 +69,7 @@ export const payOrder = (order, paymentResult) => async (
   } = getState();
 
   try {
-    const { data } = axios.put(`/api/orders/${order._id}/pay`, paymentResult, {
+    const { data } = axios.put(`https://cart-gear22.herokuapp.com/api/orders/${order._id}/pay`, paymentResult, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
@@ -88,7 +88,7 @@ export const listOrderMine = () => async (dispatch, getState) => {
     singInInfo: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.get('/api/orders/mine', {
+    const { data } = await axios.get('https://cart-gear22.herokuapp.com/api/orders/mine', {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },

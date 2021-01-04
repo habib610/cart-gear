@@ -5,7 +5,7 @@ export const listProduct = () => async (dispatch) => {
     dispatch({type: PRODUCT_LIST_REQUEST});
 
     try{
-        const {data} = await axios.get('/api/products');
+        const {data} = await axios.get('https://cart-gear22.herokuapp.com/api/products');
         dispatch({type: PRODUCT_LIST_SUCCESS, payload: data})
     }
     catch(error) {
@@ -17,7 +17,7 @@ export const detailsProduct = (productId) => async (dispatch) => {
     dispatch({type: PRODUCT_DETAILS_REQUEST});
 
     try{
-        const {data} = await axios.get(`/api/products/${productId}`);
+        const {data} = await axios.get(`https://cart-gear22.herokuapp.com/api/products/${productId}`);
         dispatch({type: PRODUCT_DETAILS_SUCCESS, payload: data})
 }
     catch(error) {

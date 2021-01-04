@@ -16,6 +16,7 @@ import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 function App() {
 
+
   const cart = useSelector(state => state.cart);
   const {cartItems} = cart;
   const singInInfo = useSelector(state => state.singInInfo);

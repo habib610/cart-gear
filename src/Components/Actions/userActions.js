@@ -17,7 +17,7 @@ export const userSingInAction = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGN_IN_REQUEST, payload: { email, password } });
 
   try {
-      const {data} = await axios.post('/api/users/signin', {email, password});
+      const {data} = await axios.post('https://cart-gear22.herokuapp.com/api/users/signin', {email, password});
       dispatch({type: USER_SIGN_IN_SUCCESS, payload: data})
       localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
@@ -35,7 +35,7 @@ export const userRegisterAction = (name,email, password) => async (dispatch) => 
   dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password } });
 
   try {
-      const {data} = await axios.post('/api/users/register', {name, email, password});
+      const {data} = await axios.post('https://cart-gear22.herokuapp.com/api/users/register', {name, email, password});
       dispatch({type: USER_REGISTER_SUCCESS, payload: data});
       dispatch({type: USER_SIGN_IN_SUCCESS, payload: data});
       localStorage.setItem('userInfo', JSON.stringify(data))
@@ -66,7 +66,7 @@ export const detailsUser = (userId) => async(dispatch, getState) => {
   } = getState();
 
   try {
-    const {data} = await axios.get(`/api/users/${userId}`, {
+    const {data} = await axios.get(`https://cart-gear22.herokuapp.com/api/users/${userId}`, {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -88,7 +88,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     singInInfo: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.put(`/api/users/profile`, user, {
+    const { data } = await axios.put(`https://cart-gear22.herokuapp.com/api/users/profile`, user, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
