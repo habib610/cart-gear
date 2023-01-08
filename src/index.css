@@ -1,269 +1,271 @@
-html{
-  font-size: 62.5%; /* 16px * 62.5 = 10px */
-  box-sizing: border-box;
+html {
+    font-size: 62.5%; /* 16px * 62.5 = 10px */
+    box-sizing: border-box;
 }
-body{
-  margin: 0;
-  height: 100vh;
-  font-size: 1.6rem;
-  font-family:Helvetica,  Arial, sans-serif, 'Fredoka One', cursive;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+    margin: 0;
+    height: 100vh;
+    font-size: 1.6rem;
+    font-family: "Fredoka One", cursive;
+    font-family: "Open Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-:root{
-  --mainBg: #00102e;
-  --hoverColor: #ff1500;
-  --buttonColor: #ff931e;
+:root {
+    --mainBg: #00102e;
+    --hoverColor: #ff1500;
+    --buttonColor: #ff931e;
 }
-#root{
-  height: 100%;
+#root {
+    height: 100%;
 }
 .row {
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.middle{
-  height: 80vh;
-  display: flex;
-  align-items: center;
+.middle {
+    height: 80vh;
+    display: flex;
+    align-items: center;
 }
-.center{
-  justify-content: center;
+.center {
+    justify-content: center;
 }
-a{
-  text-decoration: none;
+a {
+    text-decoration: none;
 }
-a:hover{
-color: var(--hoverColor);
+a:hover {
+    color: var(--hoverColor);
 }
 header a {
-  padding: 1.5rem;
-  color: #ffffff;
+    padding: 1.5rem;
+    color: #ffffff;
 }
-a.brand{
-  color: #ff4939;
-  font-family: 'Fredoka One', cursive;
-  font-size: 3.5rem;
+a.brand {
+    color: #ff4939;
+    font-family: "Fredoka One", cursive;
+    font-size: 3.5rem;
 }
-.grid-container{
-  display: grid;
-  grid-template-areas: 
-  'header'
-  'main'
-  'footer'
-  ;
-  height: 100%;
-  grid-template-columns: 1fr;
-  grid-template-rows: 5rem 1fr 5rem;
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem 1fr 5rem;
 }
 header {
-  grid-area: header;
-  background-color: var(--mainBg);
+    grid-area: header;
+    background-color: var(--mainBg);
 }
 main {
-  grid-area: main;
-  padding: 1rem;
+    grid-area: main;
+    padding: 1rem;
 }
-footer{
-  grid-area: footer;
-  background-color: var(--mainBg);
-  color: white;
+footer {
+    grid-area: footer;
+    background-color: var(--mainBg);
+    color: white;
 }
-footer.center{
-  justify-content: center;
+footer.center {
+    justify-content: center;
 }
-.card{
-  margin: 2rem;
-  border: 1px solid lightgray;
-  border-radius: .5rem;
+.card {
+    margin: 2rem;
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
 }
-.card-body{
-  padding: 1rem;
+.card-body {
+    padding: 1rem;
 }
 
 ul > li {
-  margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 }
-h2{
-  font-size: 1.8rem;
+h2 {
+    font-size: 1.8rem;
 }
-.rating{
-  color: var(--buttonColor);
+.rating {
+    color: var(--buttonColor);
 }
 img.card-image {
-  max-width: 29rem;
-  width: 100%;
+    max-width: 29rem;
+    width: 100%;
 }
 
-img.large{
-  width: 100%;
+img.large {
+    width: 100%;
 }
-.col-1{
-  flex: 1 1 25rem;
-  padding: 1rem;
-  margin-right: 1rem;
+.col-1 {
+    flex: 1 1 25rem;
+    padding: 1rem;
+    margin-right: 1rem;
 }
-.col-2{
-  flex: 2 1 50rem;
+.col-2 {
+    flex: 2 1 50rem;
 }
-ul , li {
-  list-style-type: none;
-  margin: 0;
+ul,
+li {
+    list-style-type: none;
+    margin: 0;
 }
-.top{
-  align-items: flex-start;
+.top {
+    align-items: flex-start;
 }
 .col-1 > ul {
-  padding-inline-start: 0px !important;
-  padding: 0px 20px !important;
+    padding-inline-start: 0px !important;
+    padding: 0px 20px !important;
 }
-textarea, select, input{
-  padding: 1rem;
+textarea,
+select,
+input {
+    padding: 1rem;
 }
-button{
-  font-size: 1.5rem;
-  padding: 1rem;
-  margin-top: .5rem;
-  cursor: pointer;
-  border: .1rem  #a4a4a4 solid ;
-  background-color: #f5f5f5;
-  border-radius: .25rem;
+button {
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    border: 0.1rem #a4a4a4 solid;
+    background-color: #f5f5f5;
+    border-radius: 0.25rem;
 }
-button.primary{
-  background-color: var(--buttonColor);
+button.primary {
+    background-color: var(--buttonColor);
 }
-button.primary:hover{
-  border: 1px solid #00102e;
+button.primary:hover {
+    border: 1px solid #00102e;
 }
-button.block{
-  display: block;
-  width: 100%;
+button.block {
+    display: block;
+    width: 100%;
 }
-.border{
-  border: 1px solid lightgray;
+.border {
+    border: 1px solid lightgray;
 }
-.rating > :last-child{
-  color: black;
+.rating > :last-child {
+    color: black;
 }
 
-.success{
-  color: darkgreen;
+.success {
+    color: darkgreen;
 }
 
 .alert {
-  padding: 1rem;
-  border: 0.1px solid transparent;
-  border-radius: .5rem;
+    padding: 1rem;
+    border: 0.1px solid transparent;
+    border-radius: 0.5rem;
 }
 .alert-info {
-  color: #2020a0;
-  background-color: #e0e0ff;
+    color: #2020a0;
+    background-color: #e0e0ff;
 }
 .alert-danger {
-  color: #a02020;
-  background-color: #ffe0e0e0;
+    color: #a02020;
+    background-color: #ffe0e0e0;
 }
 .alert-success {
-  color: #20a020;
-  background-color: #edffe9;
+    color: #20a020;
+    background-color: #edffe9;
 }
-.danger{
-  color: red;
-}
-
-.border{
-  border:  slateblue solid;
-  border-radius: .5rem;
-  background-color: #00102e11;
-}
-.badge{
-  background-color: var(--hoverColor);
-  padding: .2rem .7rem;
-  border-radius: 50%;
-  margin-left: .2rem;
-  color: white;
+.danger {
+    color: red;
 }
 
-.small{
-  max-width: 5rem;
-  width: 100%;
+.border {
+    border: slateblue solid;
+    border-radius: 0.5rem;
+    background-color: #00102e11;
 }
-.min-30{
-  min-width: 30rem;
+.badge {
+    background-color: var(--hoverColor);
+    padding: 0.2rem 0.7rem;
+    border-radius: 50%;
+    margin-left: 0.2rem;
+    color: white;
+}
+
+.small {
+    max-width: 5rem;
+    width: 100%;
+}
+.min-30 {
+    min-width: 30rem;
 }
 
 .form {
-  max-width: 60rem;
-  margin: 0 auto;
-
+    max-width: 60rem;
+    margin: 0 auto;
 }
 .form > div {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
 }
 .form label {
-  margin: 1rem 0;
+    margin: 1rem 0;
 }
-.dropdown{
-  display: inline-block;
-  position: relative;
+.dropdown {
+    display: inline-block;
+    position: relative;
 }
-.dropdown-item{
-  position: absolute;
-  right: 0;
-  min-width: 15rem;
-  margin: 0;
-  margin-top: 0.4rem;
-  padding: 1rem;
-  background-color: var(--mainBg);
-  border-radius: .5rem;
-  z-index: 1;
-  display: none;
+.dropdown-item {
+    position: absolute;
+    right: 0;
+    min-width: 15rem;
+    margin: 0;
+    margin-top: 0.4rem;
+    padding: 1rem;
+    background-color: var(--mainBg);
+    border-radius: 0.5rem;
+    z-index: 1;
+    display: none;
 }
-.dropdown:hover .dropdown-item{
-  display: block;
+.dropdown:hover .dropdown-item {
+    display: block;
 }
 
 .checkoutSteps > div {
-  border-top: .3rem solid #c0c0c0;
-  flex: 1;
-  color: #00102e;
-  padding: 1rem;
-  font-weight: bold;
+    border-top: 0.3rem solid #c0c0c0;
+    flex: 1;
+    color: #00102e;
+    padding: 1rem;
+    font-weight: bold;
 }
 .checkoutSteps > div.active {
-  color: var(--buttonColor);
-  border-top-color:   var(--buttonColor) ;
+    color: var(--buttonColor);
+    border-top-color: var(--buttonColor);
 }
 
-.table{
-  width: 100%;
-  border-collapse: collapse;
+.table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .table tbody tr:nth-of-type(odd) {
-  background-color: #e4dfff;
+    background-color: #e4dfff;
 }
-.table th{
-  background-color: var(--mainBg);
-  color: white;
+.table th {
+    background-color: var(--mainBg);
+    color: white;
 }
-.table th, 
+.table th,
 .table td {
-  text-align: left;
-  border: .1rem solid var(--buttonColor);
-  padding: .5rem;
+    text-align: left;
+    border: 0.1rem solid var(--buttonColor);
+    padding: 0.5rem;
 }
 
 .table button {
-  margin: 0 0 0.2rem;
+    margin: 0 0 0.2rem;
 }
 button.small {
-  font-size: 1.2rem;
-  width: 100%;
-  padding: 1rem;
-  max-width: 10rem;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 1rem;
+    max-width: 10rem;
 }
